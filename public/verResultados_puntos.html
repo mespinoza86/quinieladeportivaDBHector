@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados Pronosticados por Jugador</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/ver-resultados_puntos.js" defer></script>
+    <style>
+        .resultado {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px;
+        }
+        .puntos {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Resultados Pronosticados por Jugador</h1>
+    </header>
+    <!-- Modal para contraseña -->
+    <div id="passwordModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+        background:rgba(0,0,0,0.5); justify-content:center; align-items:center;">
+        <div style="background:white; padding:20px; border-radius:10px; text-align:center; max-width:300px;">            
+            <p>Jornada aún no ha cerrado.<br>Introduce la contraseña:</p>
+            <input type="password" id="passwordInput" placeholder="Contraseña" style="padding:8px; margin:10px 0; width:100%;"/>
+            <br>
+            <button id="passwordOk">Aceptar</button>
+            <button id="passwordCancel">Cancelar</button>
+        </div>
+    </div>
+    <main>
+        <section id="verResultadosSection">
+            <form id="verResultadosForm" style="display: flex; flex-direction: column; align-items: center;">
+                <h2>Buscar Resultados</h2>
+                <label for="jugadorSelect">Jugador:</label>
+                <select id="jugadorSelect"></select>
+
+                <label for="jornadaSelect">Jornada:</label>
+                <select id="jornadaSelect"></select>
+
+                <button id="searchResultadosButtonpuntos" type="button">Buscar Resultados</button>
+
+                <div id="resultadosContainer"></div>
+                <div id="puntosContainer"></div>
+                <div id="totalPuntosContainer"></div>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <button onclick="window.location.href='index.html'">Volver</button>
+    </footer>
+</body>
+</html>

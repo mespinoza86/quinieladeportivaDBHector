@@ -1,63 +1,257 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido a la Quiniela Deportiva</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/main.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Quiniela Deportiva</title>
+
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body>
-    <header>
-        <h1>Bienvenido a la Quiniela Deportiva</h1>
-    </header>
-    <main>
-        <form id="menuForm">
-            <section id="menuPrincipal">
-                <h2>Menú Principal</h2>                
-                 <div class="menu-item">
-                        <a href="jugadores.html">Agregar Jugadores</a>
-                </div>               
-                  <div class="menu-item">
-                        <a href="jornadas.html">Agregar Jornada</a>
-                    </div>                 
-                <div class="menu-item">
-                    <a href="ver_jornadas.html">Ver Jornadas</a>
-                </div> 
-                <div class="menu-item">
-                        <a href="resultados.html">Agregar Resultados por Jugador</a>
-                </div>                               
-                <div class="menu-item">
-                    <a href="verResultados.html">Ver Resultados Pronosticados por Jugador</a>
-                </div>
-                <div class="menu-item">
-                    <a href="verResultados_puntos.html">Ver Resultados Pronosticados y Puntos obtenidos por Jugador</a>
-                </div>           
-                <div class="menu-item">
-                    <a href="ver_resultados_totales_de_jugadores.html">Ver Resultados Pronosticados de todos los jugadores</a>
-                </div>     
-                  <div class="menu-item">
-                        <a href="agregar-resultados-oficiales.html">Agregar Resultados Oficiales a Jornada</a>
-                    </div>               
-                <div class="menu-item">
-                    <a href="ver-resultados-oficiales.html">Ver Resultados Oficiales</a>
-                </div>
-                <div class="menu-item">
-                    <a href="resultados-totales.html">Ver Resultados Totales</a>
-                </div>            
-                <div class="menu-item">
-                    <a href="generar_reporte.html">Generar Reporte</a>
-                </div>                                          
-                    <div class="menu-item">
-                        <a href="enviarresultados.html">Enviar Resultados</a>
-                    </div>
 
-                    <div class="menu-item">
-                        <a href="copiarresultadojugador.html">Copiar Resultados</a>
-                    </div>
+<body class="app-body">
 
-            </section>
-        </form>
-    </main>
+  <main class="mobile-shell">
+
+    <section class="hero-card">
+      <div class="hero-top">
+        <div>
+          <p class="eyebrow">Liga de Quiniela</p>
+          <h1>Quiniela Deportiva</h1>
+        </div>
+
+        <div class="app-logo">⚽</div>
+      </div>
+
+      <p class="hero-text">
+        Administra jornadas, revisa resultados, consulta puntos.
+      </p>
+    </section>    
+    <section class="quick-actions">
+
+    <section class="home-rotator">
+  <section id="rankingCard" class="ranking-card rotator-panel active">
+    <div class="ranking-header">
+      <div>
+        <p class="eyebrow">Tabla general</p>
+        <h2>Top 3 Ranking</h2>
+      </div>
+      <div class="ranking-icon">🏆</div>
+    </div>
+
+    <div id="topRankingContainer">
+      Cargando ranking...
+    </div>
+  </section>
+
+  <section id="liveMatchesCard" class="live-card rotator-panel">
+    <div class="live-header">
+      <div>
+        <p class="eyebrow">En vivo</p>
+        <h2>Partidos jugándose ahora</h2>
+      </div>
+      <div class="live-icon">🟢</div>
+    </div>
+
+    <div id="liveMatchesContainer"></div>
+  </section>
+</section>
+
+
+      <div class="quick-actions admin-grid">
+        <a class="action-card" href="jugadores.html">
+          <span class="icon">👥</span>
+          <div>
+            <h3>Agregar Jugadores</h3>
+            <p>Crear o eliminar participantes</p>
+          </div>
+        </a>
+
+        <a class="action-card" href="jornadas.html">
+          <span class="icon">📅</span>
+          <div>
+            <h3>Agregar Jornada</h3>
+            <p>Crear partidos y comodines</p>
+          </div>
+        </a>
+
+      <a class="action-card" href="importar_partidos.html">
+        <span class="icon">🌎</span>
+        <div>
+          <h3>Importar Partidos</h3>
+          <p>Buscar partidos desde API</p>
+        </div>
+      </a>
+
+      <a href="/campeon-oficial.html" class="menu-card admin-card">
+        <div class="menu-icon">🏆</div>
+        <div class="menu-title">Campeón Oficial</div>
+        <div class="menu-description">Seleccionar campeón mundial y asignar 20 puntos</div>
+    </a>
+
+        <a class="action-card" href="resultados.html">
+          <span class="icon">🎯</span>
+          <div>
+            <h3>Resultados por Jugador</h3>
+            <p>Agregar pronósticos manuales</p>
+          </div>
+        </a>
+
+        <a class="action-card" href="agregar-resultados-oficiales.html">
+          <span class="icon">✅</span>
+          <div>
+            <h3>Resultados Oficiales</h3>
+            <p>Registrar marcadores reales</p>
+          </div>
+        </a>
+
+        <a class="action-card" href="generar_reporte.html">
+          <span class="icon">📄</span>
+          <div>
+            <h3>Generar Reporte</h3>
+            <p>Crear resumen de resultados</p>
+          </div>
+        </a>
+
+        <a class="action-card" href="enviarresultados.html">
+          <span class="icon">📲</span>
+          <div>
+            <h3>Enviar Resultados</h3>
+            <p>Compartir información</p>
+          </div>
+        </a>
+
+        <a class="action-card" href="copiarresultadojugador.html">
+          <span class="icon">📋</span>
+          <div>
+            <h3>Copiar Resultados</h3>
+            <p>Copiar texto por jugador</p>
+          </div>
+        </a>
+      </div>
+        
+     <a class="action-card primary" href="llenar_jornada_user.html">
+        <span class="icon">📝</span>
+        <div>
+          <h3>Llenar Quiniela</h3>
+          <p>Registrar pronósticos</p>
+        </div>
+      </a>
+
+      <a href="/pronostico-campeon.html" class="menu-card">
+        <div class="menu-icon">🏆</div>
+        <div class="menu-title">Campeón Mundial</div>
+        <div class="menu-description">Elige quién ganará la Copa del Mundo</div>
+      </a>
+
+      <a class="action-card" href="ver-resultados-oficiales.html">
+        <span class="icon">✅</span>
+        <div>
+          <h3>Resultados Oficiales</h3>
+          <p>Marcadores reales</p>
+        </div>
+      </a>
+
+      <a class="action-card" href="ver-pronosticos-campeon.html">
+        <span class="icon">🏆</span>
+        <div>
+          <h3>Ver Campeones</h3>
+          <p>Ver qué campeón eligió cada jugador</p>      
+        </div>
+      </a>      
+
+      <a class="action-card" href="resultados-totales.html">
+        <span class="icon">🏆</span>
+
+        <div>
+          <h3>Tabla General</h3>
+          <p>Resultados acumulados</p>
+        </div>
+      </a>      
+
+      <a class="action-card" href="verResultados_puntos.html">
+        <span class="icon">🏅</span>
+
+        <div>
+          <h3>Puntos</h3>
+          <p>Puntos por jornada</p>
+        </div>
+      </a>
+
+      <a class="action-card" href="ver_resultados_totales_de_jugadores.html">
+        <span class="icon">📈</span>
+
+        <div>
+          <h3>Totales por Jugador</h3>
+          <p>Resultados individuales</p>
+        </div>
+      </a>
+      
+      <a class="action-card" href="verResultados.html">
+        <span class="icon">🎯</span>
+
+        <div>
+          <h3>Pronósticos</h3>
+          <p>Resultados por jugador</p>
+        </div>
+      </a>
+
+      <div class="quick-actions">
+        <a class="action-card" href="ver_jugadores.html">
+          <span class="icon">👥</span>
+          <div>
+            <h3>Ver Jugadores</h3>
+            <p>Participantes registrados</p>
+          </div>
+        </a>
+
+        <a class="action-card" href="ver_jornadas.html">
+          <span class="icon">📅</span>
+          <div>
+            <h3>Ver Jornadas</h3>
+            <p>Partidos disponibles</p>
+          </div>
+        </a>
+
+
+      <a class="action-card" href="reglamento_quiniela.html">
+        <span class="icon">👥</span>
+
+        <div>
+          <h3>Reglamento</h3>
+          <p>Reglas de la quiniela</p>
+        </div>
+      </a>      
+
+
+    </section>
+
+  </main>
+
+  <nav class="bottom-nav">
+  <a href="index.html" class="active">
+    🏠
+    <span>Inicio</span>
+  </a>
+
+  <a href="ver_jornadas.html">
+    📅
+    <span>Jornadas</span>
+  </a>
+
+  <a href="reglamento_quiniela.html">
+    📜
+    <span>Reglamento</span>
+  </a>
+
+  <a href="resultados-totales.html">
+    🏆
+    <span>Tabla</span>
+  </a>
+</nav>
+
+  <script src="js/index-live.js"></script>
+  <script src="js/index-ranking.js"></script>
+
 </body>
 </html>

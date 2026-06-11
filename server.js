@@ -295,7 +295,7 @@ app.get('/api/jugadores', async (req, res) => {
   res.json(jugadores.map(j => j.nombre));
 });
 
-app.post('/api/jugadores', requireAdmin, async (req, res) => {
+app.post('/api/jugadores',  async (req, res) => {
   const { nombre, password } = req.body;
 
   if (!nombre || !password) {
@@ -313,7 +313,7 @@ app.post('/api/jugadores', requireAdmin, async (req, res) => {
   res.json(jugadores.map(j => ({ nombre: j.nombre })));
 });
 
-app.delete('/api/jugadores/:nombre', requireAdmin, async (req, res) => {
+app.delete('/api/jugadores/:nombre', async (req, res) => {
   try {
     await Jugador.deleteOne({ nombre: req.params.nombre });
     res.json({ message: 'Jugador eliminado correctamente' });
@@ -388,7 +388,7 @@ app.get('/api/jornadas/:nombre', async (req, res) => {
   });
 });
 
-app.post('/api/jornadas', requireAdmin, async (req, res) => {
+app.post('/api/jornadas',  async (req, res) => {
   const { nombre, partidos, fechaCierre } = req.body;
 
   await Jornada.findOneAndUpdate(
@@ -405,7 +405,7 @@ app.post('/api/jornadas', requireAdmin, async (req, res) => {
   res.json(jornadas.map(j => [j.nombre, j.partidos]));
 });
 
-app.post('/api/jornadas/importar-api', requireAdmin, async (req, res) => {
+app.post('/api/jornadas/importar-api', async (req, res) => {
   try {
     const { nombre, fechaCierre, partidos } = req.body;
 
@@ -447,7 +447,7 @@ app.post('/api/jornadas/importar-api', requireAdmin, async (req, res) => {
   }
 });
 
-app.post('/api/jornadas/agregar-partido', requireAdmin, async (req, res) => {
+app.post('/api/jornadas/agregar-partido', async (req, res) => {
   const { jornada, partido } = req.body;
   const doc = await Jornada.findOne({ nombre: jornada });
 
@@ -459,7 +459,7 @@ app.post('/api/jornadas/agregar-partido', requireAdmin, async (req, res) => {
   res.json({ success: true });
 });
 
-app.post('/api/jornadas/eliminar-partidos',requireAdmin, async (req, res) => {
+app.post('/api/jornadas/eliminar-partidos', async (req, res) => {
   const { jornada, indices } = req.body;
   const doc = await Jornada.findOne({ nombre: jornada });
 
@@ -471,7 +471,7 @@ app.post('/api/jornadas/eliminar-partidos',requireAdmin, async (req, res) => {
   res.json({ success: true });
 });
 
-app.post('/api/jornadas/comodin',requireAdmin, async (req, res) => {
+app.post('/api/jornadas/comodin', async (req, res) => {
   const { jornada, partidos } = req.body;
   const doc = await Jornada.findOne({ nombre: jornada });
 
@@ -932,7 +932,7 @@ app.get('/api/resultados-oficiales', async (req, res) => {
   res.json(resultados);
 });
 
-app.post('/api/resultados-oficiales', requireAdmin, async (req, res) => {
+app.post('/api/resultados-oficiales',  async (req, res) => {
   const { jornada, resultados } = req.body;
 
   const jornadaDoc = await Jornada.findOne({ nombre: jornada });
@@ -1131,7 +1131,7 @@ app.post('/api/resultados-seguros/:jugador/:jornada', async (req, res) => {
 });
 
 /* ================= API: Resultados Totales ================= */
-app.delete('/api/jornadas/:nombre', requireAdmin, async (req, res) => {
+app.delete('/api/jornadas/:nombre',  async (req, res) => {
   try {
     const nombreJornada = req.params.nombre;
 
@@ -1296,7 +1296,7 @@ app.get('/api/pronosticos-campeon-publicos', async (req, res) => {
 });
 
 
-app.get('/api/pronosticos-campeon', requireAdmin, async (req, res) => {
+app.get('/api/pronosticos-campeon',  async (req, res) => {
   const docs = await PronosticoCampeon.find({}).sort({ jugador: 1 });
   res.json(docs);
 });
@@ -1306,7 +1306,7 @@ app.get('/api/campeon-oficial', async (req, res) => {
   res.json(doc || null);
 });
 
-app.post('/api/campeon-oficial', requireAdmin, async (req, res) => {
+app.post('/api/campeon-oficial',  async (req, res) => {
   const { campeon } = req.body;
 
   if (!campeon) {

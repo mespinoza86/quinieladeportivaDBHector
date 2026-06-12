@@ -1219,56 +1219,52 @@ app.get('/api/pronostico-campeon/:jugador', async (req, res) => {
   res.json(doc || null);
 });
 
-
 app.post('/api/pronostico-campeon', async (req, res) => {
   try {
-    const { jugador, password, campeon } = req.body;
+    const { jugador, campeon } = req.body;
 
-    if (!jugador || !password || !campeon) {
-      return res.status(400).json({ error: 'Jugador, contraseña y campeón son obligatorios' });
+    if (!jugador || !campeon) {
+      return res.status(400).json({
+        error: 'Jugador y campeón son obligatorios'
+      });
     }
 
     const jornada1 = await Jornada.findOne({ nombre: 'Jornada1' });
 
-    if (jornada1 && jornada1.fechaCierre) {
-      const ahora = new Date();
-      const fechaCierre = new Date(jornada1.fechaCierre);
-
-      if (ahora > fechaCierre) {
-        return res.status(403).json({
-          error: 'El pronóstico del campeón mundial ya está cerrado porque la Jornada1 ya cerró.'
-        });
-      }
-    }
-
     const jugadorEncontrado = await Jugador.findOne({ nombre: jugador });
 
     if (!jugadorEncontrado) {
-      return res.status(404).json({ error: 'Jugador no encontrado' });
-    }
-
-    const passwordCorrecto = await bcrypt.compare(
-      String(password).trim(),
-      String(jugadorEncontrado.password || '').trim()
-    );
-
-    if (!passwordCorrecto) {
-      return res.status(401).json({ error: 'Contraseña incorrecta' });
+      return res.status(404).json({
+        error: 'Jugador no encontrado'
+      });
     }
 
     await PronosticoCampeon.findOneAndUpdate(
       { jugador },
-      { jugador, campeon, fechaRegistro: new Date() },
-      { upsert: true, new: true }
+      {
+        jugador,
+        campeon,
+        fechaRegistro: new Date()
+      },
+      {
+        upsert: true,
+        new: true
+      }
     );
 
-    res.json({ success: true, message: 'Campeón guardado correctamente' });
+    res.json({
+      success: true,
+      message: 'Campeón guardado correctamente'
+    });
 
   } catch (error) {
     console.error('Error guardando campeón:', error);
-    res.status(500).json({ error: 'Error interno guardando campeón' });
+    res.status(500).json({
+      error: 'Error interno guardando campeón'
+    });
   }
 });
+
 
 
 app.get('/api/pronosticos-campeon-publicos', async (req, res) => {

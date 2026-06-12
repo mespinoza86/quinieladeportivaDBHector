@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const jugadorSelect = document.getElementById('jugadorSelect');
-  const passwordInput = document.getElementById('passwordInput');
   const campeonSelect = document.getElementById('campeonSelect');
   const guardarBtn = document.getElementById('guardarBtn');
   const mensaje = document.getElementById('mensaje');
@@ -35,9 +34,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   jugadorSelect.addEventListener('change', async () => {
     const jugador = jugadorSelect.value;
+
     campeonSelect.value = '';
-    passwordInput.value = '';
     mensaje.textContent = '';
+    mensaje.className = '';
 
     if (!jugador) return;
 
@@ -51,14 +51,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   guardarBtn.addEventListener('click', async () => {
     const jugador = jugadorSelect.value;
-    const password = passwordInput.value.trim();
     const campeon = campeonSelect.value;
 
     mensaje.className = '';
     mensaje.textContent = '';
 
-    if (!jugador || !password || !campeon) {
-      mensaje.textContent = 'Seleccione jugador, escriba la contraseña y elija campeón.';
+    if (!jugador || !campeon) {
+      mensaje.textContent = 'Seleccione jugador y elija campeón.';
       mensaje.classList.add('mensaje-error');
       return;
     }
@@ -66,7 +65,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const res = await fetch('/api/pronostico-campeon', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ jugador, password, campeon })
+      body: JSON.stringify({ jugador, campeon })
     });
 
     const data = await res.json();
@@ -74,7 +73,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (res.ok) {
       mensaje.textContent = 'Campeón guardado correctamente.';
       mensaje.classList.add('mensaje-exito');
-      passwordInput.value = '';
     } else {
       mensaje.textContent = data.error || 'Error guardando campeón.';
       mensaje.classList.add('mensaje-error');
